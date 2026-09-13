@@ -1,0 +1,12 @@
+{
+  "solution": "PPALMCore",
+  "version": "1.0.0.0",
+  "generatedAt": "2026-09-13T12:00:00.000Z",
+  "environmentVariables": [
+    { "schemaName": "ppa_API_URL" },
+    { "schemaName": "ppa_NOTIFICATION_EMAIL" }
+  ],
+  "connectionReferences": [],
+  "tables": ["ppa_Project"],
+  "flows": ["NotifyProjectCreated-413E0A66-6AAD-F111-B374-70A8A5ABA408.json"]
+}
