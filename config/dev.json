@@ -1,0 +1,6 @@
+{
+  "environmentId": "11111111-1111-1111-1111-111111111111",
+  "tenantId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+  "url": "https://org-dev.crm.dynamics.com",
+  "solution": "PPALMCore"
+}

@@ -1,13 +1,10 @@
 {
-  "environment": "PPALM-TEST",
+  "environmentId": "22222222-2222-2222-2222-222222222222",
+  "tenantId": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+  "url": "https://org-test.crm.dynamics.com",
+  "solution": "PPALMCore",
   "environmentVariables": [
-    {
-      "schemaName": "ppa_API_URL",
-      "value": "https://test-api.local"
-    },
-    {
-      "schemaName": "ppa_NOTIFICATION_EMAIL",
-      "value": "suporte@test.local"
-    }
+    { "schemaName": "ppa_API_URL", "value": "https://api.exemplo.com" },
+    { "schemaName": "ppa_NOTIFICATION_EMAIL", "value": "time@exemplo.com" }
   ]
 }

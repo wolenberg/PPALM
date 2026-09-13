@@ -18,8 +18,8 @@ xml.match(
 
 if(version){
 
- *onsole.log(
-   `Version: ${version*1]}`
+ console.log(
+   `Version: ${version[1]}`
  );
 
 }
