@@ -1,0 +1,13 @@
+{
+  "environment": "PPALM-TEST",
+  "environmentVariables": [
+    {
+      "schemaName": "ppa_API_URL",
+      "value": "https://test-api.local"
+    },
+    {
+      "schemaName": "ppa_NOTIFICATION_EMAIL",
+      "value": "suporte@test.local"
+    }
+  ]
+}
