@@ -1,0 +1,11 @@
+<environmentvariabledefinition schemaname="ppa_NOTIFICATION_EMAIL">
+  <defaultvalue>ppalm@contoso.com</defaultvalue>
+  <displayname default="NOTIFICATION_EMAIL">
+    <label description="NOTIFICATION_EMAIL" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0.0.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000000</type>
+</environmentvariabledefinition>

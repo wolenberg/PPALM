@@ -1,0 +1,11 @@
+<environmentvariabledefinition schemaname="ppa_API_URL">
+  <defaultvalue>https://dev-api.ppalm.local</defaultvalue>
+  <displayname default="API_URL">
+    <label description="API_URL" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0.0.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000000</type>
+</environmentvariabledefinition>

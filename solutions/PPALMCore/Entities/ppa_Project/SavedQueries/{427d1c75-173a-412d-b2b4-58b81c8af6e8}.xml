@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{427d1c75-173a-412d-b2b4-58b81c8af6e8}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="ppa_projectname" select="1" icon="1" preview="1">
+        <row name="result" id="ppa_projectid">
+          <cell name="ppa_projectname" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="ppa_project">
+          <attribute name="ppa_projectid" />
+          <attribute name="ppa_projectname" />
+          <attribute name="createdon" />
+          <order attribute="ppa_projectname" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive Projects" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

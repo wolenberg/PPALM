@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{d49eb77e-0dd2-4e79-9c03-a30127526a27}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="ppa_projectname" select="1" icon="1" preview="1">
+        <row name="result" id="ppa_projectid">
+          <cell name="ppa_projectname" width="300" />
+          <cell name="ppa_description" width="150" />
+          <cell name="ppa_status" width="150" />
+          <cell name="ppa_environment" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="ppa_project">
+          <attribute name="ppa_projectid" />
+          <attribute name="ppa_projectname" />
+          <attribute name="createdon" />
+          <order attribute="ppa_projectname" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="ppa_description" />
+          <attribute name="ppa_status" />
+          <attribute name="ppa_environment" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Projects" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
