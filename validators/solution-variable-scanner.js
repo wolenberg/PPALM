@@ -1,41 +1,25 @@
 const fs = require("fs");
 const path = require("path");
 
-const variables = [];
+const variablesPath =
+  "./solutions/PPALMCore/environmentvariabledefinitions";
 
-function scanFolder(folder) {
-  const files = fs.readdirSync(folder);
+console.log("");
+console.log("Environment Variables Found:");
+console.log("");
 
-  files.forEach(file => {
+const folders =
+  fs.readdirSync(variablesPath);
 
-    const fullPath = path.join(folder, file);
+folders.forEach(folder => {
 
-    if (fs.statSync(fullPath).isDirectory()) {
-      scanFolder(fullPath);
-      return;
-    }
+  const fullPath =
+    path.join(variablesPath, folder);
 
-    const content = fs.readFileSync(fullPath, "utf8");
+  if (fs.statSync(fullPath).isDirectory()) {
 
-    const regex =
-      /ppa_[A-Za-z0-9_]+/g;
+    console.log(`✅ ${folder}`);
 
-    const matches =
-      content.match(regex);
+  }
 
-    if (matches) {
-      variables.push(...matches);
-    }
-  });
-}
-
-scanFolder("./solutions/PPALMCore");
-
-const uniqueVariables =
-  [...new Set(variables)];
-
-console.log("Variables Found:");
-
-uniqueVariables.forEach(v => {
-  console.log(v);
 });
