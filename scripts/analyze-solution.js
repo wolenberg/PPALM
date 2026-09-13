@@ -22,7 +22,14 @@ try {
       "node analyzers/table-analyzer.js",
       { stdio: "inherit" }
     );
-
+    execSync(
+      "node analyzers/flow-analyzer.js",
+      { stdio:"inherit" }
+    );
+    execSync(
+      "node analyzers/solution-analyzer.js",
+      { stdio:"inherit" }
+      );
     console.log("");
     console.log("✅ Analysis Completed");
 

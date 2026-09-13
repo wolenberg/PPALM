@@ -4,27 +4,81 @@ require("express");
 const router =
 express.Router();
 
+const {
+
+  exportSolution,
+
+  importSolution
+
+}
+=
+require(
+  "../services/deployment-service"
+);
+
 router.post(
-    "/start",
-    (req,res) => {
+  "/export",
+  (req,res) => {
 
-        const {
-            source,
-            target,
-            solution
-        } = req.body;
+    try {
 
-        res.json({
+      const result =
+      exportSolution(req.body);
 
-            success:true,
+      res.json({
 
-            source,
+        success:true,
 
-            target,
+        result
 
-            solution
+      });
 
-        });
+    }
+    catch(error){
+
+      res.status(500)
+      .json({
+
+        success:false,
+
+        error:error.message
+
+      });
+
+    }
+
+});
+
+router.post(
+  "/import",
+  (req,res) => {
+
+    try {
+
+      const result =
+      importSolution(req.body);
+
+      res.json({
+
+        success:true,
+
+        result
+
+      });
+
+    }
+    catch(error){
+
+      res.status(500)
+      .json({
+
+        success:false,
+
+        error:error.message
+
+      });
+
+    }
 
 });
 
