@@ -20,3 +20,15 @@
 ## v0.4
 
 - AI Solution Analysis
+
+## Feature
+
+Pre-Deployment Environment Validation
+
+Capabilities:
+
+- Detect missing Environment Variables
+- Create missing Environment Variables
+- Detect missing Connection References
+- Validate connections
+- Generate deployment readiness report
