@@ -7,7 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "validate": "node scripts/run-validation.js"
+    "validate": "node scripts/run-validation.js",
+    "analyze": "node scripts/analyze-solution.js"
   },
   "repository": {
     "type": "git",
