@@ -3,7 +3,6 @@ const path = require('path');
 const { getEnvironmentVariableValues, getConnectionReferences } = require('../lib/dataverseClient');
 
 const REQUIREMENTS_PATH = path.join(__dirname, '..', 'analyzers', 'requirements.json');
-const TARGET_CONFIG_PATH = process.env.PPALM_TARGET_CONFIG || './config/test.json';
 const REPORT_PATH = path.join(__dirname, '..', 'releases', 'validation-report.json');
 
 function loadJson(filePath) {
@@ -58,13 +57,18 @@ function printSection(title, rows, labelKey) {
   console.log('');
 }
 
+// PPALM_TARGET_CONFIG define qual config/<ambiente>.json é o alvo da
+// validação. Lido dentro de run() (não no top-level do módulo) para que a
+// API possa setar essa env var por request antes de chamar run().
 async function run() {
+  const targetConfigPath = process.env.PPALM_TARGET_CONFIG || './config/test.json';
+
   console.log('=================================');
   console.log('PPALM Environment Validation');
   console.log('=================================');
 
   const requirements = loadJson(REQUIREMENTS_PATH);
-  const targetConfig = loadJson(TARGET_CONFIG_PATH);
+  const targetConfig = loadJson(targetConfigPath);
 
   console.log(`Ambiente: ${targetConfig.url}`);
   console.log(`Solução:  ${requirements.solution}`);
@@ -111,10 +115,18 @@ async function run() {
       : `❌ ${failures.length} pendência(s) encontrada(s). Veja releases/validation-report.json`
   );
 
-  process.exitCode = report.readiness ? 0 : 1;
+  return report;
 }
 
-run().catch((err) => {
-  console.error('Erro ao validar ambiente:', err.message);
-  process.exitCode = 1;
-});
+if (require.main === module) {
+  run()
+    .then((report) => {
+      process.exitCode = report.readiness ? 0 : 1;
+    })
+    .catch((err) => {
+      console.error('Erro ao validar ambiente:', err.message);
+      process.exitCode = 1;
+    });
+}
+
+module.exports = { run };

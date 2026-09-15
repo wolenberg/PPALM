@@ -1,24 +1,37 @@
-const API_URL =
-"http://localhost:3001/api";
+const API_URL = "http://localhost:3001/api";
 
-export async function analyzeSolution() {
+async function request(path, options = {}) {
+  const res = await fetch(`${API_URL}${path}`, {
+    headers: { "Content-Type": "application/json" },
+    ...options,
+  });
 
-  const response =
-    await fetch(
-      `${API_URL}/solutions/analyze`
-    );
+  const data = await res.json();
 
-  return await response.json();
+  if (!res.ok || data.success === false) {
+    throw new Error(data.error || `Erro ${res.status}`);
+  }
 
+  return data;
 }
 
-export async function validateSolution() {
+export const listEnvironments = () => request("/environments/all");
 
-  const response =
-    await fetch(
-      `${API_URL}/solutions/validate`
-    );
+export const createEnvironment = (payload) =>
+  request("/environments", { method: "POST", body: JSON.stringify(payload) });
 
-  return await response.json();
+export const getAppRegistration = () => request("/config/app-registration");
 
-}
+export const saveAppRegistration = (payload) =>
+  request("/config/app-registration", { method: "POST", body: JSON.stringify(payload) });
+
+export const analyzeSolution = () => request("/solutions/analyze");
+
+export const validateSolution = (payload) =>
+  request("/validate", { method: "POST", body: JSON.stringify(payload || {}) });
+
+export const exportSolution = (payload) =>
+  request("/deployments/export", { method: "POST", body: JSON.stringify(payload) });
+
+export const importSolution = (payload) =>
+  request("/deployments/import", { method: "POST", body: JSON.stringify(payload) });

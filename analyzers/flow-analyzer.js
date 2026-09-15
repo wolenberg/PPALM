@@ -1,44 +1,26 @@
-const fs =
-require("fs");
+const fs = require("fs");
 
-const path =
-require("path");
+const workflowFolder = "./solutions/PPALMCore/Workflows";
 
-const workflowFolder =
-"./solutions/PPALMCore/Workflows";
+function analyzeFlows() {
+  if (!fs.existsSync(workflowFolder)) return [];
 
-console.log("");
-console.log("Flows");
-console.log("---------------------");
-
-if(
- !fs.existsSync(
-   workflowFolder
- )
-){
-
- console.log(
-   "No Flows Found"
- );
-
- process.exit(0);
-
+  return fs.readdirSync(workflowFolder).filter((file) => file.endsWith(".json"));
 }
 
-const files =
-fs.readdirSync(
- workflowFolder
-);
+function printReport(flows) {
+  console.log("");
+  console.log("Flows");
+  console.log("---------------------");
+  if (flows.length === 0) {
+    console.log("No Flows Found");
+  } else {
+    flows.forEach((f) => console.log(`✅ ${f}`));
+  }
+}
 
-files
-.filter(
- file =>
- file.endsWith(".json")
-)
-.forEach(file=>{
+if (require.main === module) {
+  printReport(analyzeFlows());
+}
 
- console.log(
-   `✅ ${file}`
- );
-
-});
+module.exports = { analyzeFlows };
